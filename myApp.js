@@ -49,7 +49,7 @@ app.get('/api/:date*?',  function(req, res) {
   const newDate = date ? new Date(parseDate) : new Date();
   const utc = newDate.toUTCString();
   const unix =  new Date(newDate).valueOf();
-  if(unix != "Invalid Date")
+  if(!isNaN(unix))
     return res.json({unix,utc});
   return res.json({ error : "Invalid Date" });
 });
